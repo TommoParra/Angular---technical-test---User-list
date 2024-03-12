@@ -1,0 +1,15 @@
+<section class="user-list">
+  <h1 class="section-title">User list</h1>
+  <form class="search-form" [formGroup]="searchForm" (ngSubmit)="searchUsers()">
+    <input type="text" formControlName="searchTerm" placeholder="Search...">
+    <button type="submit">Search</button>
+    <br>
+    <i>Search by name, surname or email</i>
+  </form>
+  <app-user-card *ngFor="let user of visibleUsers" [user]="user"></app-user-card>
+  <div class="paginator">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Prev</button>
+    <span>Page {{ currentPage }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</section>
